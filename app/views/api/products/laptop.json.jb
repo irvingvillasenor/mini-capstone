@@ -1,0 +1,9 @@
+
+{
+
+  name: @laptop.name,
+  price: @laptop.price,
+  image_url: @laptop.image_url,
+  description: @laptop.description
+
+}
