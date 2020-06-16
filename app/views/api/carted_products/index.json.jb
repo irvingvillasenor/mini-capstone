@@ -1,0 +1,10 @@
+# @carted_products.map do |carted_product|
+# {
+
+#   id: product.id,
+#   status: product.status
+
+# }
+# end
+
+@carted_products

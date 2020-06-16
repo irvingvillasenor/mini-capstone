@@ -1,25 +1,13 @@
 class Api::ProductsController < ApplicationController
 
-  # def all_products
-  #   @all_products = Product.all
-
-  #   render "products.json.jb"
-    
-  # end
-
-  # def laptop_action
-  #   @laptop = Product.find_by(name: "Laptop")
-  #   render "laptop.json.jb"
-  # end
-
-  # def single_product
-  #   @single_product = Product.sample
-  #   render "single_product.json.jb"
-
-  # end
-
+  before_action :authenticate_admin, except: [:index,:show]
+  
   def index
     @all_products = Product.all
+    if params[:category]
+      category = Category.find_by(name: params[:category])
+      @all_products = category.products
+    end
     render "index.json.jb"
     
   end
@@ -31,11 +19,13 @@ class Api::ProductsController < ApplicationController
   end
 
   def create
+    
     @product = Product.new(
       name: params[:name], 
       price: params[:price], 
       image_url: params[:image_url], 
-      description: params[:description] 
+      description: params[:description],
+      supplier_id: params[:supplier_id] 
     )
     if @product.save
       render "show.json.jb"

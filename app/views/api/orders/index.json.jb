@@ -1,0 +1,2 @@
+@orders.map do |order|
+  render partial: "order.jason.jb", locals: {order: order}

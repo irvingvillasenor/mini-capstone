@@ -1,6 +1,5 @@
 class ApplicationController < ActionController::Base
   protect_from_forgery with: :null_session
-end
 
   def current_user
     auth_headers = request.headers["Authorization"]
@@ -27,4 +26,11 @@ end
       render json: {}, status: :unauthorized
     end
   end
+
+  def authenticate_admin
+    unless current_user && current_user.admin
+      render json: {}, status: :unauthorized
+    end
+  end
+
 end
