@@ -1,0 +1,8 @@
+<h2>Name:<%=@product.name%></h2>
+<img src="<%= @product.images[0].url%>" width=300>
+<h3>Price:<%=@product.price%></h3>
+<h3>Description:<%=@product.description%></h3>
+<h3>Supplier ID:<%=@product.supplier_id%></h3>
+<h4>In Stock:<%=@product.in_stock%></h4>
+<a href="/products/<%= @product.id %>/edit">Edit</a></a>
+<a href="/products/<%= @product.id %>" data-method="delete">Delete</a>
